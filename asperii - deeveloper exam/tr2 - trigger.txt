@@ -1,0 +1,16 @@
+trigger MaozTrigger on CKSW_BASE__Shift__c (before update) 
+{
+	for(CKSW_BASE__Shift__c s: trigger.new)
+    {
+        if(s.CKSW_BASE__Status__c == 'Published')
+        {
+            list<CKSW_BASE__Employee_Absence__c> AbsencesUsers= [SELECT Name FROM CKSW_BASE__Employee_Absence__c Where CKSW_BASE__Shift__c = :s.Id];
+            string descript='';
+            for(CKSW_BASE__Employee_Absence__c t: AbsencesUsers)
+            {
+                descript+= t.Name + ',';
+            }
+            s.CKSW_BASE__Description__c = descript;
+        }
+    }
+}

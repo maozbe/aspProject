@@ -1,0 +1,53 @@
+engineer object:
+
+singleton Assignment; //every engineer can have only one object of assignment;
+Location l1; 
+bool available;//to know if this engineer already got an assignment for this day;
+time shiftStart;
+time shiftEnd;
+
+engineer methods:
+setAssignment(Assignment);
+bool ExecAssignment();
+
+////////////////////////////////
+
+assignment objects:
+client c1;  //to know who request this assignment;
+time t1;   // the requested time;
+bool status;  //done/not done;
+
+assignmet methods:
+bool setStatus(bool a);
+
+///////////////////////////////
+
+client object:
+string phonenum;
+Location l1;
+
+client methods:
+getlocation();
+
+///////////////////////////////
+
+location objects:
+enum locations;
+
+location methods:
+setLocation(String a); //add a new location to the enum;
+
+//////////////////////////////
+
+program mgr object:
+ArrayList<assignment> assignments;
+ArrayList <engineers> engineers;
+
+program mgr methods:
+setAllAssinments();
+//-->
+this function will match 
+assignments to the engineers:
+it will check if the time of the assignment
+between the shiftStart and the shiftEnd of the employee.
+it also will check the locations of the employee and the client and try to match them by the closest one(Dynamic programming) 
